@@ -5,6 +5,7 @@ using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Sources;
 
 namespace ConsoleApp4
 {
@@ -45,6 +46,16 @@ namespace ConsoleApp4
                     osh++;
                 }
             } while (osh == 1);
+            Console.WriteLine("Введите максимальную доступную сокрость грузовика. (от 30 до 60)");
+            do
+            {   
+                scor = float.Parse(Console.ReadLine());
+                if (scor < 30 || scor > 60)
+                {
+                    Console.WriteLine("Вы ввели неправлильное число.");
+                    osh++;
+                }
+            } while (osh == 1);
             Console.Clear();
         }
         public virtual void out_info()
@@ -72,8 +83,8 @@ namespace ConsoleApp4
                 Random rnd = new Random();
                 km = rnd.Next(1000, 15000);
                 time = km / scor;
-                time2 = (ras * 4) / 5;
-                t = (float)Math.Round((time + float.Parse("0,002778")) * time2, 2);
+                time2 = km / ras;
+                t = (float)Math.Round(time * time2, 2);
                 Console.WriteLine("Авто проехало:" + km);
                 if (bak < t)
                 {

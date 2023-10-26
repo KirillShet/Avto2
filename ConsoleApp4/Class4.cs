@@ -23,6 +23,7 @@ namespace ConsoleApp4
                     gryz = new Class1();
                     gryz.info();
                     gryz.out_info();
+                    Console.WriteLine();
                     gryz.move1();
                 }
                 else if (var == 2)
