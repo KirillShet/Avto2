@@ -43,10 +43,8 @@ namespace ConsoleApp4
         }
         public override void out_info()
         {
-            Console.WriteLine("Количество бензина в баке: " + bak);
-            Console.WriteLine("Расход бензина за 1 час езды: " + ras);
-            Console.WriteLine("Расстояние, которое проехал до этого момента: " + mov);
-            Console.WriteLine("Максимальная масса транспорта: " + (massa + (dop_massa * 50)));
+            dop_massa = dop_massa * 62;
+            base.out_info();
         }
     }
 }

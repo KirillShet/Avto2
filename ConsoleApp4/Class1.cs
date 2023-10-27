@@ -9,31 +9,19 @@ using System.Threading.Tasks.Sources;
 
 namespace ConsoleApp4
 {
-    internal class Class1
+    internal class Class1: Class3
     {
-        protected float bak;
-        protected float ras;
-        protected float mov;
         public float time;
-        protected float max_bak;
-        protected float massa;
-        protected float dop_massa;
+        
         protected int osh;
-        protected float scor;
         protected int km;
         protected float proh;
         protected float vrem;
         protected float dop;
         protected float top;
-        public virtual void info()
+        public override void info()
         {
-            Console.WriteLine("Количество бензина в баке: ");
-            bak = float.Parse(Console.ReadLine());
-            max_bak = bak;
-            Console.WriteLine("Расход топлива за 1 час езды: ");
-            ras = float.Parse(Console.ReadLine());
-            Console.WriteLine("Сколько проехал до этого: ");
-            mov = float.Parse(Console.ReadLine());
+            base.info();
             massa = 38000;
             Console.WriteLine("Введите число, которое будет равно дополнительному весу. (максимум 6350)");
             do 
@@ -58,12 +46,9 @@ namespace ConsoleApp4
             } while (osh == 1);
             Console.Clear();
         }
-        public virtual void out_info()
+        public override void out_info()
         {
-            Console.WriteLine("Количество бензина в баке: " + bak);
-            Console.WriteLine("Расход бензина за 1 час езды: " + ras);
-            Console.WriteLine("Расстояние, которое проехал до этого момента: " + mov);
-            Console.WriteLine("Максимальная масса транспорта: " + (massa + dop_massa));
+            base.out_info();
         }
 
         public virtual void move1() 
