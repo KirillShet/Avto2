@@ -18,8 +18,10 @@ namespace ConsoleApp4
                 osh = 0;
                 do
                 {
-                    Console.WriteLine("Введите цифру соответсвующего транспорта: 1 - грузовик, 2 - автобус.");
+                    Console.WriteLine("Введите цифру соответсвующего транспорта: 1 - грузовик, 2 - автобус. ");
+                    Console.WriteLine("Если же хотете завершить работу программы, то введите цифру 3.");
                     int var = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
                     if (var == 1)
                     {
                         gryz = new Class1();
@@ -33,8 +35,14 @@ namespace ConsoleApp4
                         avtobus = new Class2();
                         avtobus.info();
                         avtobus.out_info();
+                        Console.WriteLine();
+                        avtobus.move1();
                     }
-                    else if (var < 0 || var > 2)
+                    else if (var == 3)
+                    {
+                        osh = 2;
+                    }
+                    else if (var < 0 || var > 3)
                     {
                         Console.WriteLine("Вы ввели не то число.");
                         osh++;

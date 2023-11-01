@@ -6,18 +6,23 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp4
 {
-    internal class Class2: Class1
+    internal class Class2: Class3
     {
         public override void info()
         {
-            Console.WriteLine("Количество бензина в баке: ");
-            bak = float.Parse(Console.ReadLine());
-            max_bak = bak;
-            Console.WriteLine("Расход топлива за 1 час езды: ");
-            ras = float.Parse(Console.ReadLine());
-            Console.WriteLine("Сколько проехал до этого: ");
-            mov = float.Parse(Console.ReadLine());
+            base.info();
             massa = 15000;
+            Console.WriteLine("Введите максимальную доступную сокрость автобуса. (от 30 до 90)");
+            do
+            {
+                osh = 0;
+                scor = float.Parse(Console.ReadLine());
+                if (scor < 30 || scor > 90)
+                {
+                    Console.WriteLine("Вы ввели неправлильное число.");
+                    osh++;
+                }
+            } while (osh == 1);
             Console.WriteLine("Введите число, которое будет равно количеству человек в автобусе. (максимум 58)");
             do
             {
@@ -29,22 +34,17 @@ namespace ConsoleApp4
                     osh++;
                 }
             } while (osh == 1);
-            Console.WriteLine("Введите максимальную доступную сокрость грузовика. (от 30 до 90)");
-            do
-            {
-                scor = float.Parse(Console.ReadLine());
-                if (scor < 30 || scor > 90)
-                {
-                    Console.WriteLine("Вы ввели неправлильное число.");
-                    osh++;
-                }
-            } while (osh == 1);
+            dop_massa = dop_massa * 62;
+            allmassa = massa + dop_massa;
             Console.Clear();
         }
         public override void out_info()
         {
-            dop_massa = dop_massa * 62;
             base.out_info();
+        }
+        public virtual void move1()
+        {
+            base.move5();
         }
     }
 }
