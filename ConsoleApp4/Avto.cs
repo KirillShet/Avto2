@@ -33,23 +33,35 @@ namespace ConsoleApp4
 
         public virtual void info()
         {
-            do
+            osh = 0;
+            Console.WriteLine("Количество бензина в баке: ");
+            bak = float.Parse(Console.ReadLine());
+            if (bak < 0 || bak > 1300)
             {
-                osh = 0;
-                Console.WriteLine("Количество бензина в баке: ");
-                bak = float.Parse(Console.ReadLine());
+                Console.Clear();
+                Console.WriteLine("Вы ввели неправильное значение.");
+                info();
+            }
+            else
+            {
                 max_bak = bak;
-                Console.WriteLine("Расход топлива на 100 км: ");
-                ras = float.Parse(Console.ReadLine());
-                Console.WriteLine("Сколько проехал до этого: ");
-                mov = float.Parse(Console.ReadLine());
-                if (bak <= 0 || ras <= 0 || mov < 0)
-                {
-                    Console.Clear();
-                    osh++;
-                    Console.WriteLine("Вы ввели не то значение.");
-                }
-            } while (osh == 1);
+            }
+            Console.WriteLine("Расход топлива на 100 км: ");
+            ras = float.Parse(Console.ReadLine());
+            if (ras < 0 || ras > bak)
+            {
+                Console.Clear();
+                Console.WriteLine("Вы ввели неправильное значение.");
+                info();
+            }
+            Console.WriteLine("Сколько проехал до этого: ");
+            mov = float.Parse(Console.ReadLine());
+            if (mov < 0)
+            {
+                Console.Clear();
+                Console.WriteLine("Вы ввели неправильное значение.");
+                info();
+            }
         }
         public virtual void out_info()
         {
@@ -87,7 +99,7 @@ namespace ConsoleApp4
                         mov += way;
                         km -= way;
                         bak = 0;
-                        Console.WriteLine($"Пройдено за этот раз {Math.Round(way, 2)}");
+                        Console.WriteLine($"Пройдено за этот раз {Math.Round(way)}");
                         Console.WriteLine($"Пройдено всего {Math.Round(mov)}");
                         Console.WriteLine($"Осталось топлива {Math.Round(bak)}");
                         Console.WriteLine($"Время всего пути {Math.Floor(alltime)} часов {Math.Round((Math.Round(alltime, 2) - Math.Floor(alltime)) * 60)} минуты");
