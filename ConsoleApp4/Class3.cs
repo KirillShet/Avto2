@@ -18,7 +18,6 @@ namespace ConsoleApp4
         protected int chel;
         protected float km;
         protected float povt;
-        protected float proh;
         protected bool vrem;
         protected float dop;
         protected float way;
@@ -61,11 +60,11 @@ namespace ConsoleApp4
             Console.WriteLine("Максимальная скорость автобуса: " + scor);
         }
 
-        protected virtual float distance_znach(float distance)
+        protected virtual float distance_znach(float km)
         {
-            distance -= ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f));
+            km += ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f));
             way = (bak - ((((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)))*(ras/100)))/(ras/100);
-            result = way - distance;
+            result = way - km;
             return result;
         }
 
@@ -84,7 +83,6 @@ namespace ConsoleApp4
                         vrem = true;
                         time = way / scor + (scor * allmassa / ((scor * massa) / 0.004444444f));
                         way = ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)) + time * scor;
-                        proh += way;
                         alltime += time;
                         mov += way;
                         km -= way;
@@ -133,7 +131,6 @@ namespace ConsoleApp4
                     }
                     else
                     {
-                        proh = 0;
                         time = (km - ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f))) / scor + (scor * allmassa / ((scor * massa) / 0.004444444f));
                         bak -= km * (ras / 100);
                         alltime += time;
