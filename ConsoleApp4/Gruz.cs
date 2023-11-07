@@ -11,8 +11,8 @@ namespace ConsoleApp4
 {
     internal class Gruz: Avto
     {
-        
-        public override void info()
+
+        protected override void info()
         {
             base.info();
             massa = 38000;
@@ -40,6 +40,11 @@ namespace ConsoleApp4
             } while (osh == 1);
             allmassa = massa + dop_massa;
             Console.Clear();
+        }
+        public override void vivod_info()
+        {
+            info();
+            base.vivod_info();
         }
     }
 }

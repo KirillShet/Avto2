@@ -21,19 +21,13 @@ namespace ConsoleApp4
             if (var == 1)
             {
                 gryz = new Gruz();
-                gryz.info();
-                gryz.out_info();
-                Console.WriteLine();
-                gryz.move5();
+                gryz.vivod_info();
                 Main();
             }
             else if (var == 2)
             {
                 avtobus = new Bus();
-                avtobus.info();
-                avtobus.out_info();
-                Console.WriteLine();
-                avtobus.move5();
+                avtobus.vivod_info();
                 Main();
             }
             else if (var == 3)

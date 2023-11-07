@@ -31,7 +31,7 @@ namespace ConsoleApp4
         protected float max_bak;
         protected int vib;
 
-        public virtual void info()
+        protected virtual void info()
         {
             osh = 0;
             Console.WriteLine("Количество бензина в баке: ");
@@ -63,16 +63,21 @@ namespace ConsoleApp4
                 info();
             }
         }
-        public virtual void out_info()
+        protected void out_info()
         {
             Console.WriteLine("Количество бензина в баке: " + bak);
-            Console.WriteLine("Расход бензина за 1 час езды: " + ras);
+            Console.WriteLine("Расход бензина за 100 км езды: " + ras);
             Console.WriteLine("Расстояние, которое проехал до этого момента: " + mov);
             Console.WriteLine("Максимальная масса транспорта: " + (allmassa));
             Console.WriteLine("Максимальная скорость автобуса: " + scor);
         }
 
-        protected virtual float distance_znach(float km)
+        public virtual void vivod_info()
+        {
+            out_info();
+            move5();
+        }
+        protected float distance_znach(float km)
         {
             km += ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f));
             way = (bak - ((((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)))*(ras/100)))/(ras/100);
@@ -80,7 +85,7 @@ namespace ConsoleApp4
             return result;
         }
 
-        public virtual void move5()
+        protected void move5()
         {
             do
             {

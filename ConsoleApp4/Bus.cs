@@ -8,7 +8,7 @@ namespace ConsoleApp4
 {
     internal class Bus: Avto
     {
-        public override void info()
+        protected override void info()
         {
             base.info();
             massa = 15000;
@@ -37,6 +37,11 @@ namespace ConsoleApp4
             dop_massa = chel * 62;
             allmassa = massa + dop_massa;
             Console.Clear();
+        }
+        public override void vivod_info()
+        {
+            info();
+            base.vivod_info();
         }
     }
 }
