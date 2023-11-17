@@ -12,7 +12,6 @@ namespace ConsoleApp4
     internal class Avto
     {
         protected float time;
-        protected float allmassa;
         protected float alltime;
         protected int osh;
         protected int chel;
@@ -26,7 +25,6 @@ namespace ConsoleApp4
         protected float ras;
         protected float mov;
         protected float scor;
-        protected float massa;
         protected float dop_massa;
         protected float max_bak;
         protected int vib;
@@ -63,7 +61,7 @@ namespace ConsoleApp4
                 info();
             }
         }
-        protected void out_info()
+        protected void out_info(float allmassa)
         {
             Console.WriteLine("Количество бензина в баке: " + bak);
             Console.WriteLine("Расход бензина за 100 км езды: " + ras);
@@ -72,12 +70,7 @@ namespace ConsoleApp4
             Console.WriteLine("Максимальная скорость автобуса: " + scor);
         }
 
-        public virtual void vivod_info()
-        {
-            out_info();
-            move5();
-        }
-        protected float distance_znach(float km)
+        protected float distance_znach(float km, float allmassa, float massa)
         {
             km += ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f));
             way = (bak - ((((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)))*(ras/100)))/(ras/100);
@@ -85,7 +78,7 @@ namespace ConsoleApp4
             return result;
         }
 
-        protected void move5()
+        protected void move5(float allmassa, float massa)
         {
             do
             {
@@ -95,7 +88,7 @@ namespace ConsoleApp4
                 {
                     povt = 0;
                     Console.WriteLine("Авто должно проехать: " + Math.Round(km));
-                    if (distance_znach(km) < 0)
+                    if (distance_znach(km, allmassa, massa) < 0)
                     {
                         vrem = true;
                         time = way / scor + (scor * allmassa / ((scor * massa) / 0.004444444f));
