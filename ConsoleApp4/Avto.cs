@@ -11,6 +11,7 @@ namespace ConsoleApp4
 {
     internal class Avto
     {
+        protected float temp0;
         protected float time;
         protected float alltime;
         protected int osh;
@@ -69,11 +70,15 @@ namespace ConsoleApp4
             Console.WriteLine("Максимальная масса транспорта: " + (allmassa));
             Console.WriteLine("Максимальная скорость автобуса: " + scor);
         }
-
+        protected virtual float F(float massa)
+        {
+            result = (scor * massa) / temp0;
+            return result;
+        }
         protected float distance_znach(float km, float allmassa, float massa)
         {
-            km += ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f));
-            way = (bak - ((((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)))*(ras/100)))/(ras/100);
+            km -= ((float)Math.Pow(scor, 2) * allmassa) / (2 * F(massa));
+            way = (bak - ((((float)Math.Pow(scor, 2) * allmassa) / (2 * F(massa))*(ras/100))))/(ras/100);
             result = way - km;
             return result;
         }
@@ -91,8 +96,8 @@ namespace ConsoleApp4
                     if (distance_znach(km, allmassa, massa) < 0)
                     {
                         vrem = true;
-                        time = way / scor + (scor * allmassa / ((scor * massa) / 0.004444444f));
-                        way = ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f)) + time * scor;
+                        time = way / scor + (scor * allmassa / F(massa));
+                        way = ((float)Math.Pow(scor, 2) * allmassa) / (2 * F(massa)) + time * scor;
                         alltime += time;
                         mov += way;
                         km -= way;
@@ -141,7 +146,7 @@ namespace ConsoleApp4
                     }
                     else
                     {
-                        time = (km - ((float)Math.Pow(scor, 2) * allmassa) / (2 * ((scor * massa) / 0.004444444f))) / scor + (scor * allmassa / ((scor * massa) / 0.004444444f));
+                        time = (km - ((float)Math.Pow(scor, 2) * allmassa) / (2 * F(massa))) / scor + (scor * allmassa / F(massa));
                         bak -= km * (ras / 100);
                         alltime += time;
                         mov += km;

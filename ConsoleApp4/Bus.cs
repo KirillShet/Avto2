@@ -47,5 +47,11 @@ namespace ConsoleApp4
             Console.WriteLine();
             move5(allmassa, massa);
         }
+        protected override float F(float massa)
+        {
+            temp0 = 0.0013888f;
+            base.F(massa);
+            return result;
+        }
     }
 }
